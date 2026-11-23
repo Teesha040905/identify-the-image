@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Identify The Image</title>
+    <meta name="description" content="Upload a photo and find out whether it shows a cat or a dog." />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <h1>Identify The Image</h1>
+        <p class="lead">Upload a photo and find out: <strong>cat</strong> or <strong>dog</strong>?</p>
+      </header>
+
+      <form id="form" class="card" novalidate>
+        <label id="drop" class="drop" for="photo">
+          <input id="photo" name="photo" type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/bmp" />
+          <img id="preview" alt="" hidden />
+          <span id="hint" class="hint">
+            <span class="hint-title">Choose a photo</span>
+            <span class="hint-sub">or drag it here · JPG, PNG, WebP · up to 5 MB</span>
+          </span>
+        </label>
+        <button id="submit" type="submit" disabled>Identify</button>
+      </form>
+
+      <section id="result" class="card result" aria-live="polite" hidden>
+        <p id="verdict" class="verdict"></p>
+        <div class="bars">
+          <div class="bar-row">
+            <span class="bar-name">Cat</span>
+            <span class="bar"><span id="bar-cat" class="fill"></span></span>
+            <span id="pct-cat" class="pct"></span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-name">Dog</span>
+            <span class="bar"><span id="bar-dog" class="fill"></span></span>
+            <span id="pct-dog" class="pct"></span>
+          </div>
+        </div>
+        <p id="guess" class="guess"></p>
+      </section>
+
+      <p id="error" class="error" role="alert" hidden></p>
+
+      <footer>Runs a small image model (MobileNetV2) on the server. Photos aren't stored.</footer>
+    </main>
+    <script src="/assets/js/app.js"></script>
+  </body>
+</html>
